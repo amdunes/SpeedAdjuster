@@ -12,6 +12,9 @@ Install this mod through the Mod Manager:
 * Close the game, and install this mod along with its dependencies (`ReturnOfModding` and `HelperFunctions`) from the list on the left-hand side.
 * Launch the game by clicking the "Launch Game" button, and the mods should be loaded. Enjoy!
 
+### Special Instructions if you do not have a Numpad
+* Go to [ImGuiKey Finder](https://oprypin.github.io/crystal-imgui/ImGui/ImGuiKey.html) and find the key to replace the numpad values with
+
 
 ### Credits
 * Everybody active in the [Return of Modding server](https://discord.gg/VjS57cszMq).
