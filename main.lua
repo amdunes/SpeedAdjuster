@@ -17,6 +17,7 @@ end)
 -- ========== Parameters ==========
 
 local default_speed = 2.8
+local default_friction = 0.3
 local current_speed = default_speed
 local increase_key = "KeypadAdd"
 local decrease_key = "KeypadSubtract"
@@ -63,7 +64,7 @@ function set_player_speed(speed, friction)
     if not player then return end
     
     player.pHmax = speed
-    player.pFriction = friction
+    player.pFriction = friction or default_friction
 end
 
 function reset_player_speed()
