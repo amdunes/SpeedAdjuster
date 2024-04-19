@@ -5,9 +5,9 @@ log.info("Successfully loaded ".._ENV["!guid"]..".")
 mods.on_all_mods_loaded(function() for k, v in pairs(mods) do if type(v) == "table" and v.hfuncs then Helper = v end end end)
 mods.on_all_mods_loaded(function() for k, v in pairs(mods) do if type(v) == "table" and v.tomlfuncs then Toml = v end end 
     params = {
-        increase_key = "Numpad +",
-        decrease_key = "Numpad -",
-        reset_key = "Numpad *",
+        increase_key = "KeypadAdd",
+        decrease_key = "KeypadSubtract",
+        reset_key = "KeypadMultiply",
         speed_adjuster_enabled = true
     }
 
@@ -19,9 +19,7 @@ end)
 local default_speed = 2.8
 local default_friction = 0.3
 local current_speed = default_speed
-local increase_key = "KeypadAdd"
-local decrease_key = "KeypadSubtract"
-local reset_key = "KeypadMultiply"
+local current_friction = default_friction
 
 -- ========== ImGui ==========
 
@@ -64,35 +62,37 @@ function set_player_speed(speed, friction)
     if not player then return end
     
     player.pHmax = speed
-    player.pFriction = friction or default_friction
+    player.pFriction = friction
 end
 
 function reset_player_speed()
-    set_player_speed(default_speed)
+    set_player_speed(default_speed, default_friction)
 end
 
 function increase_speed()
     current_speed = current_speed + 1
-    set_player_speed(current_speed)
+    current_friction=current_friction + 0.1
+    set_player_speed(current_speed, current_friction)
 end
 
 function decrease_speed()
     current_speed = math.max(1, current_speed - 1)
-    set_player_speed(current_speed)
+    current_friction=current_friction - 0.1
+    set_player_speed(current_speed, current_friction)
 end
 
 -- ========== Main ==========
 
 gui.add_always_draw_imgui(function()
-    if ImGui.IsKeyPressed(ImGuiKey[increase_key]) then
+    if ImGui.IsKeyPressed(ImGuiKey[params['increase_key']]) then
         increase_speed()
     end
 
-    if ImGui.IsKeyPressed(ImGuiKey[decrease_key]) then
+    if ImGui.IsKeyPressed(ImGuiKey[params['decrease_key']]) then
         decrease_speed()
     end
 
-    if ImGui.IsKeyPressed(ImGuiKey[reset_key]) then
+    if ImGui.IsKeyPressed(ImGuiKey[params['reset_key']]) then
         reset_player_speed()
     end
 end)
