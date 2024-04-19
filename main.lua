@@ -85,8 +85,8 @@ end
 
 -- ========== Main ==========
 
-print(params['increase_key'])
 gui.add_always_draw_imgui(function()
+    print(params['increase_key'])
     if ImGui.IsKeyPressed(ImGuiKey[params['increase_key']]) then
         increase_speed()
     end
