@@ -66,6 +66,8 @@ function set_player_speed(speed, friction)
 end
 
 function reset_player_speed()
+    current_speed = default_speed
+    current_friction = default_friction
     set_player_speed(default_speed, default_friction)
 end
 
@@ -77,7 +79,7 @@ end
 
 function decrease_speed()
     current_speed = math.max(1, current_speed - 1)
-    current_friction=current_friction - 0.1
+   current_friction = math.max(0, current_friction - 0.1)
     set_player_speed(current_speed, current_friction)
 end
 
