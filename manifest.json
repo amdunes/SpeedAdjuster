@@ -1,7 +1,11 @@
 {
-    "name": "amdunes-SpeedAdjuster",
+    "name": "SpeedAdjuster",
     "version_number": "1.0.0",
     "website_url": "https://github.com/amdunes/SpeedAdjuster/",
-    "description": "Mod for adjusting player speed in Risk of Rain Returns.",
-    "dependencies": []
+    "description": "Mod for adjusting player speed in Return of Modding game.",
+    "dependencies": [
+        "ReturnOfModding-ReturnOfModding-1.0.23",
+        "SmoothSpatula-TomlHelper-1.0.0",
+        "Klehrik-HelperFunctions-1.0.1"
+    ]
 }
